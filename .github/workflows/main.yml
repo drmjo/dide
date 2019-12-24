@@ -13,7 +13,7 @@ jobs:
         env:
           FIRST: a
           SECOND: b
-          FINAL: $FIRST_$SECOND
+          FINAL: ${{ format('{0}_{1}', $FIRST, $SECOND) }}
     # - name: Git checkout
     #   uses: actions/checkout@v1
     # - name: DIR?
