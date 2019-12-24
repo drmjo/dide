@@ -12,10 +12,14 @@ jobs:
         run: |
           echo $FINAL
           echo ${{ format('{0}_{1}', env.FIRST, env.SECOND) }}
+          echo $SECOND_2
+          echo $FIRST
+          echo $SECOND
         env:
           FIRST: a
           SECOND: b
           FINAL: format('{0}_{1}', ${{ env.FIRST }}, ${{ env.SECOND }} )
+          SECOND_2: ${{ env.SECOND }}
     # - name: Git checkout
     #   uses: actions/checkout@v1
     # - name: DIR?
