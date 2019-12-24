@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: interpolate
-        run: echo ${{ format('{0}_{1}', $FIRST, $SECOND) }}
+        run: echo ${{ format('{0}_{1}', env.FIRST, env.SECOND) }}
         env:
           FIRST: a
           SECOND: b
