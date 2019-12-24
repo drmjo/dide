@@ -17,16 +17,22 @@ jobs:
         SHA256SUM: bbb2030487ba0570227a48c6faac1b09cad03748f5508c567d078d20feca2df2
         VERSION: 1.16.4
         APP: kubectl
-      run: make build      
+      run: |
+        make build
+        make push
     - name: 1.15.7
       env:
         SHA256SUM: 01eb6cf747a0164a68df07fac2a50698bab51af0306d2797ed5971786fde9779
         VERSION: 1.15.7
         APP: kubectl
-      run: make build
+      run: |
+        make build
+        make push
     - name: 1.14.10
       env:
         SHA256SUM: 7729c6612bec76badc7926a79b26e0d9b06cc312af46dbb80ea7416d1fce0b36
         VERSION: 1.14.10
         APP: kubectl
-      run: make build
+      run: |
+        make build
+        make push
