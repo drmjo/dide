@@ -9,11 +9,10 @@ jobs:
 
     steps:
       - name: interpolate
-        run: echo $FINAL
+        run: echo ${{ format('{0}_{1}', $FIRST, $SECOND) }}
         env:
           FIRST: a
           SECOND: b
-          FINAL: ${{ format('{0}_{1}', $FIRST, $SECOND) }}
     # - name: Git checkout
     #   uses: actions/checkout@v1
     # - name: DIR?
