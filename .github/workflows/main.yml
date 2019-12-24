@@ -11,7 +11,7 @@ jobs:
       - name: interpolate
         run: |
           echo $FINAL
-          echo ${{ format('{0}_{1}', env.FIRST, env.SECOND) }}
+          echo ${{ format('{0}_{1}', ${{ env.FIRST }}, ${{ env.SECOND }}) }}
           echo $SECOND_2
           echo $FIRST
           echo $SECOND
