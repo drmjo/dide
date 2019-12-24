@@ -11,7 +11,9 @@ jobs:
     - name: Has Make?
       run: make --version
     - name: DIR?
-      run: pwd
+      run: |
+        pwd
+        ls -la
     - name: Docker
       env:
         FQIN: drmjo/kubectl:1.14.8
@@ -24,4 +26,4 @@ jobs:
           --build-arg CI_REGISTRY_IMAGE=$CI_REGISTRY_IMAGE \
           --build-arg SHA256SUM=$SHA256SUM \
           --build-arg VERSION=$VERSION \
-          kubectl
+          $APP
