@@ -10,6 +10,8 @@ jobs:
     steps:
     - name: Has Make?
       run: make --version
+    - name: DIR?
+      run: pwd
     - name: Docker
       env:
         FQIN: drmjo/kubectl:1.14.8
