@@ -8,14 +8,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Has Make?
-      run: make --version
+    - name: Git checkout
+      uses: actions/checkout@v1
     - name: DIR?
       run: |
         pwd
         ls -la
     - name: Docker
-      uses: actions/checkout@v1
       env:
         FQIN: drmjo/kubectl:1.14.8
         SHA256SUM: 85548a113564f34e5e60253f8b1616eed0e8c171a6869668beb93d1f97fbea8e
