@@ -8,6 +8,10 @@ jobs:
     steps:
     - name: Git checkout
       uses: actions/checkout@v1
+    - name: Login
+      run: |
+        echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
+          docker login -u drmjo --password-stdin
     - name: 1.16.4
       env:
         SHA256SUM: bbb2030487ba0570227a48c6faac1b09cad03748f5508c567d078d20feca2df2
