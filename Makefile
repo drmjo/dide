@@ -15,7 +15,7 @@ build:
 		--build-arg REGISTRY=${REGISTRY} \
 		--build-arg SHA256SUM=${SHA256SUM} \
 		--build-arg VERSION=${VERSION} \
-		${app}
+		${APP}
 push:
 	docker push ${FQIN}
 
