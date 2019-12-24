@@ -8,22 +8,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Git checkout
-      uses: actions/checkout@v1
-    - name: DIR?
-      run: |
-        pwd
-        ls -la
-    - name: Docker
-      env:
-        FQIN: drmjo/kubectl:1.14.8
-        SHA256SUM: 85548a113564f34e5e60253f8b1616eed0e8c171a6869668beb93d1f97fbea8e
-        VERSION: 1.14.8
-        APP: kubectl
-      run: |
-        docker build \
-          -t $FQIN \
-          --build-arg CI_REGISTRY_IMAGE=$CI_REGISTRY_IMAGE \
-          --build-arg SHA256SUM=$SHA256SUM \
-          --build-arg VERSION=$VERSION \
-          $APP
+      - name: interpolate
+        run: echo $FINAL
+        env:
+          FIRST: a
+          SECOND: b
+          FINAL: $FIRST_$SECOND
+    # - name: Git checkout
+    #   uses: actions/checkout@v1
+    # - name: DIR?
+    #   run: |
+    #     pwd
+    #     ls -la
+    # - name: Docker
+    #   env:
+    #     FQIN: drmjo/kubectl:1.14.8
+    #     SHA256SUM: 85548a113564f34e5e60253f8b1616eed0e8c171a6869668beb93d1f97fbea8e
+    #     VERSION: 1.14.8
+    #     APP: kubectl
+    #   run: |
+    #     docker build \
+    #       -t $FQIN \
+    #       --build-arg CI_REGISTRY_IMAGE=$CI_REGISTRY_IMAGE \
+    #       --build-arg SHA256SUM=$SHA256SUM \
+    #       --build-arg VERSION=$VERSION \
+    #       $APP
