@@ -10,14 +10,14 @@ jobs:
       uses: actions/checkout@v1
     - name: docker ps
       run: docker ps
-    - name: build
+    - name: ${{ env.VERSION }}
       env:
         SHA256SUM: 85548a113564f34e5e60253f8b1616eed0e8c171a6869668beb93d1f97fbea8e
         VERSION: 1.14.8
         APP: kubectl
       run: make build
 
-    - name: build
+    - name: ${{ env.VERSION }}
       env:
         SHA256SUM: bbb2030487ba0570227a48c6faac1b09cad03748f5508c567d078d20feca2df2
         VERSION: 1.16.4
