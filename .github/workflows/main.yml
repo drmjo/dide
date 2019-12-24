@@ -18,8 +18,8 @@ jobs:
         APP: kubectl
       run: |
       docker build
-        -t ${FQIN}
-        --build-arg CI_REGISTRY_IMAGE=${CI_REGISTRY_IMAGE}
-        --build-arg SHA256SUM=${SHA256SUM}
-        --build-arg VERSION=${VERSION}
-        ${APP}
+        -t $FQIN
+        --build-arg CI_REGISTRY_IMAGE=$CI_REGISTRY_IMAGE
+        --build-arg SHA256SUM=$SHA256SUM
+        --build-arg VERSION=$VERSION
+        $APP
