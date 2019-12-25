@@ -1,6 +1,11 @@
 FROM python:3.8-buster
 
-RUN apt-get update -y && apt-get upgrade -y && apt-get clean
+RUN apt-get update -y \
+    && apt-get upgrade -y \
+    && apt-get install -y \
+        groff \
+        less \
+    && apt-get clean
 
 ARG VERSION
 
