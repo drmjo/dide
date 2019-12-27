@@ -1,0 +1,4 @@
+#compdef aws-defaults
+
+_arguments "1: :($(sed -nE 's/^\[(.*)\]$/\1/p' ~/.aws/credentials))" \
+    "2: :(us-west-1 us-west-2 us-east-1 us-east-2)"

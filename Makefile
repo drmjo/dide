@@ -14,6 +14,7 @@ build:
 		-t ${FQIN} \
 		--build-arg REGISTRY=${REGISTRY} \
 		--build-arg SHA256SUM=${SHA256SUM} \
+		--build-arg AWS_CLI_VERSION=${AWS_CLI_VERSION} \
 		--build-arg VERSION=${VERSION} \
 		${APP}
 push:

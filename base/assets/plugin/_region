@@ -1,0 +1,9 @@
+#compdef region
+
+local -a subcmds
+subcmds=(
+    'us-west-2:US West 2'
+    'us-east-1:US East 1'
+    'eu-west-1:EU West 1'
+)
+_describe 'region' subcmds
