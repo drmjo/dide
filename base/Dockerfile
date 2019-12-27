@@ -1,11 +1,11 @@
-ARG $REGISTRY
-ARG $AWS_CLI_VERSION
+ARG REGISTRY
+ARG AWS_CLI_VERSION
 
 # dependencies
 FROM $REGISTRY/appr:0.7.4 as appr
 
 # start from the aws-cli image
-FROM $REGISTRY/awscli:AWS_CLI_VERSION
+FROM $REGISTRY/awscli:$AWS_CLI_VERSION
 
 # add appr and enable helm plugin
 COPY --from=appr /bin/appr /bin/appr
@@ -33,7 +33,7 @@ ARG STERN_VERSION=1.11.0
 ENV STERN_VERSION=$STERN_VERSION
 ARG STERN_SHA256SUM=e0b39dc26f3a0c7596b2408e4fb8da533352b76aaffdc18c7ad28c833c9eb7db
 ENV STERN_SHA256SUM=$STERN_SHA256SUM
-RUN curl -OL https://github.com/wercker/stern/releases/download/${STERN_VERSION}}/stern_linux_amd64 && \
+RUN curl -OL https://github.com/wercker/stern/releases/download/${STERN_VERSION}/stern_linux_amd64 && \
     echo "${STERN_SHA256SUM} stern_linux_amd64" > stern_linux_amd64.sha256 && \
     sha256sum -c stern_linux_amd64.sha256 && \
     chmod 755 stern_linux_amd64 && \
