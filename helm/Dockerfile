@@ -23,6 +23,5 @@ FROM debian:10-slim
 
 COPY --from=builder /linux-amd64/helm /bin/helm
 COPY --from=builder /helmfile_linux_amd64 /bin/helmfile
-COPY --from=builder /sops /bin/sops
 
 ENTRYPOINT [ "/bin/helm" ]
