@@ -1,10 +1,10 @@
 FROM buildpack-deps:buster as builder
 
-ARG VERSION=2.7.2
+ARG VERSION=3.0.2
 ENV VERSION=$VERSION
-ARG SHA256SUM=9f04c4824fc751d6c932ae5b93f7336eae06e78315352aa80241066aa1d66c49
+ARG SHA256SUM=c6b7aa7e4ffc66e8abb4be328f71d48c643cb8f398d95c74d075cfb348710e1d
 ENV SHA256SUM=$SHA256SUM
-RUN curl -O https://kubernetes-helm.storage.googleapis.com/helm-v${VERSION}-linux-amd64.tar.gz && \
+RUN curl -O https://get.helm.sh/helm-v${VERSION}-linux-amd64.tar.gz && \
     echo "${SHA256SUM} helm-v${VERSION}-linux-amd64.tar.gz" > helm-v${VERSION}-linux-amd64.tar.gz.sha256 && \
     sha256sum -c helm-v${VERSION}-linux-amd64.tar.gz.sha256 && \
     tar -xzvf helm-v${VERSION}-linux-amd64.tar.gz
