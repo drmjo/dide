@@ -109,8 +109,8 @@ jobs:
         VERSION: 1.15.7
         APP: eks
       run: |
-      make build
-      make push
+        make build
+        make push
     - name: 1.14.10
       env:
         VERSION: 1.14.10
