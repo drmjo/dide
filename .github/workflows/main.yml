@@ -86,6 +86,38 @@ jobs:
       run: |
         make build
         make push
+  eks:
+    needs:
+    - awscli
+    runs-on: ubuntu-latest
+    steps:
+    - name: Git checkout
+      uses: actions/checkout@v1
+    - name: Login
+      run: |
+        echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
+          docker login -u drmjo --password-stdin
+    - name: 1.16.4
+      env:
+        VERSION: 1.16.4
+        APP: eks
+      run: |
+        make build
+        make push
+    - name: 1.15.7
+      env:
+        VERSION: 1.15.7
+        APP: eks
+      run: |
+      make build
+      make push
+    - name: 1.14.10
+      env:
+        VERSION: 1.14.10
+        APP: eks
+      run: |
+        make build
+        make push
   base:
     needs:
     - awscli
