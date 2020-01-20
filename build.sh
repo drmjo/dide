@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -exo pipefail
+set -euxo pipefail
 
 # below are some default values to make
 # the scripts work locally
@@ -10,6 +10,8 @@ IMG=${REGISTRY}/${APP}
 FQIN=${IMG}:${VERSION}
 TAGS="-t ${FQIN}"
 
+
+FQIN_SHORT=""
 VERSION_REGEX="^([0-9]+\.[0-9]+)\.([0-9]+)$"
 
 # check if the version can be shortened
@@ -29,11 +31,12 @@ docker build \
     ${TAGS} \
     --build-arg REGISTRY=${REGISTRY} \
     --build-arg SHA256SUM=${SHA256SUM} \
-    --build-arg AWS_CLI_VERSION=${AWS_CLI_VERSION} \
     --build-arg VERSION=${VERSION} \
     ${APP}
 
 docker push ${FQIN}
 
 # push short version too if FQIN_SHORT is set
-[[ -n ${FQIN_SHORT} ]] && docker push ${FQIN_SHORT}
+if [[ -n ${FQIN_SHORT} ]]; then
+    docker push ${FQIN_SHORT}
+fi

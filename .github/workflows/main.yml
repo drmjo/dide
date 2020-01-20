@@ -85,19 +85,19 @@ jobs:
       run: |
         echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
           docker login -u drmjo --password-stdin
-    - name: 1.16.4
+    - name: 1.16
       env:
-        VERSION: 1.16.4
+        VERSION: 1.16
         APP: eks
       run: bash build.sh
-    - name: 1.15.7
+    - name: 1.15
       env:
-        VERSION: 1.15.7
+        VERSION: 1.15
         APP: eks
       run: bash build.sh
-    - name: 1.14.10
+    - name: 1.14
       env:
-        VERSION: 1.14.10
+        VERSION: 1.14
         APP: eks
       run: bash build.sh
   base:
@@ -114,7 +114,33 @@ jobs:
           docker login -u drmjo --password-stdin
     - name: base
       env:
-        VERSION: buster
-        AWS_CLI_VERSION: 1.16.309
+        # this version should be the aws cli version
+        VERSION: 1.16
         APP: base
       run: bash build.sh
+  ide:
+    needs:
+    - base
+    runs-on: ubuntu-latest
+    steps:
+    - name: Git checkout
+      uses: actions/checkout@v1
+    - name: Login
+      run: |
+        echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
+          docker login -u drmjo --password-stdin
+    - name: 1.16
+      env:
+        VERSION: 1.16
+        APP: ide
+      run: bash build.sh
+    - name: 1.15
+      env:
+        VERSION: 1.15
+        APP: ide
+      run: bash build.sh
+    - name: 1.14
+        env:
+          VERSION: 1.14
+          APP: ide
+        run: bash build.sh

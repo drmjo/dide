@@ -1,11 +1,11 @@
 ARG REGISTRY
-ARG AWS_CLI_VERSION
+ARG VERSION
 
 # dependencies
 FROM $REGISTRY/appr:0.7.4 as appr
 
 # start from the aws-cli image
-FROM $REGISTRY/awscli:$AWS_CLI_VERSION
+FROM $REGISTRY/awscli:$VERSION
 
 # add appr and enable helm plugin
 COPY --from=appr /bin/appr /bin/appr
