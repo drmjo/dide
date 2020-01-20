@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -euxo pipefail
+set -exo pipefail
 
 # below are some default values to make
 # the scripts work locally
@@ -10,7 +10,6 @@ IMG=${REGISTRY}/${APP}
 FQIN=${IMG}:${VERSION}
 TAGS="-t ${FQIN}"
 
-FQIN_SHORT=""
 VERSION_REGEX="^([0-9]+\.[0-9]+)\.([0-9]+)$"
 
 # check if the version can be shortened
