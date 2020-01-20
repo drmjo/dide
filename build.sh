@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -euxo pipefail
+set -exo pipefail
 
 # below are some default values to make
 # the scripts work locally
