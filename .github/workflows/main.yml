@@ -17,9 +17,7 @@ jobs:
         SHA256SUM: c6b7aa7e4ffc66e8abb4be328f71d48c643cb8f398d95c74d075cfb348710e1d
         VERSION: 3.0.2
         APP: helm
-      run: |
-        make build
-        make push
+      run: bash build.sh
   kubectl:
     runs-on: ubuntu-latest
     steps:
@@ -34,25 +32,19 @@ jobs:
         SHA256SUM: bbb2030487ba0570227a48c6faac1b09cad03748f5508c567d078d20feca2df2
         VERSION: 1.16.4
         APP: kubectl
-      run: |
-        make build
-        make push
+      run: bash build.sh
     - name: 1.15.7
       env:
         SHA256SUM: 01eb6cf747a0164a68df07fac2a50698bab51af0306d2797ed5971786fde9779
         VERSION: 1.15.7
         APP: kubectl
-      run: |
-        make build
-        make push
+      run: bash build.sh
     - name: 1.14.10
       env:
         SHA256SUM: 7729c6612bec76badc7926a79b26e0d9b06cc312af46dbb80ea7416d1fce0b36
         VERSION: 1.14.10
         APP: kubectl
-      run: |
-        make build
-        make push
+      run: bash build.sh
   appr:
     runs-on: ubuntu-latest
     steps:
@@ -67,9 +59,7 @@ jobs:
         VERSION: 0.7.4
         SHA256SUM: 2ff148a900c5a153ea444bebac169001397ebfb466789356cd0f077b48e7d91c
         APP: appr
-      run: |
-        make build
-        make push
+      run: bash build.sh
   awscli:
     runs-on: ubuntu-latest
     steps:
@@ -83,9 +73,7 @@ jobs:
       env:
         VERSION: 1.16.309
         APP: awscli
-      run: |
-        make build
-        make push
+      run: bash build.sh
   eks:
     needs:
     - awscli
@@ -101,23 +89,17 @@ jobs:
       env:
         VERSION: 1.16.4
         APP: eks
-      run: |
-        make build
-        make push
+      run: bash build.sh
     - name: 1.15.7
       env:
         VERSION: 1.15.7
         APP: eks
-      run: |
-        make build
-        make push
+      run: bash build.sh
     - name: 1.14.10
       env:
         VERSION: 1.14.10
         APP: eks
-      run: |
-        make build
-        make push
+      run: bash build.sh
   base:
     needs:
     - awscli
@@ -135,6 +117,4 @@ jobs:
         VERSION: buster
         AWS_CLI_VERSION: 1.16.309
         APP: base
-      run: |
-        make build
-        make push
+      run: bash build.sh
