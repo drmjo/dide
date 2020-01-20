@@ -21,4 +21,5 @@ docker build \
     --build-arg VERSION=${VERSION} \
     ${APP}
 
-docker push ${FQIN} ${FQIN_SHORT}
+docker push ${FQIN}
+docker push ${FQIN_SHORT}
