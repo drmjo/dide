@@ -140,7 +140,7 @@ jobs:
         APP: ide
       run: bash build.sh
     - name: 1.14
-        env:
-          VERSION: 1.14
-          APP: ide
-        run: bash build.sh
+      env:
+        VERSION: 1.14
+        APP: ide
+      run: bash build.sh
