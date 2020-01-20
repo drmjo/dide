@@ -22,10 +22,6 @@ if [[ $VERSION =~ $VERSION_REGEX ]]; then
     TAGS+=" -t ${FQIN_SHORT}"
 fi
 
-echo $FQIN_SHORT
-echo $VERSION_SHORT
-echo $TAGS
-
 docker build \
     ${TAGS} \
     --build-arg REGISTRY=${REGISTRY} \
