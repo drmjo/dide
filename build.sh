@@ -10,7 +10,7 @@ IMG=${REGISTRY}/${APP}
 FQIN=${IMG}:${VERSION}
 TAGS="-t ${FQIN}"
 
-VERSION_REGEX="([0-9]*.[0-9]*).([0-9]*)"
+VERSION_REGEX="^([0-9]+\.[0-9]+)\.([0-9]+)$"
 
 # check if the version can be shortened
 # i.e. 1.16.7 will be converted into 1.16
