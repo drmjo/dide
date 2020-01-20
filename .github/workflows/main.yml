@@ -72,6 +72,8 @@ jobs:
     - name: 1.16.309
       env:
         VERSION: 1.16.309
+        # empty shasum
+        SHA256SUM:
         APP: awscli
       run: bash build.sh
   eks:

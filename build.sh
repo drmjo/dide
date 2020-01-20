@@ -10,7 +10,6 @@ IMG=${REGISTRY}/${APP}
 FQIN=${IMG}:${VERSION}
 TAGS="-t ${FQIN}"
 
-
 FQIN_SHORT=""
 VERSION_REGEX="^([0-9]+\.[0-9]+)\.([0-9]+)$"
 
