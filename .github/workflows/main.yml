@@ -32,6 +32,7 @@ jobs:
         SHA256SUM: 03cd1fa19f90d38005148793efdb17a9b58d01dedea641a8496b9cf228db3ab4
         VERSION: 1.17.5
         APP: kubectl
+      run: bash build.sh
     - name: 1.16.9
       env:
         SHA256SUM: 0f3a6618a2e7402b11a1d9b9ffeff3ba0c6765dc361815413ce7441799aecf96
