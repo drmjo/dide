@@ -69,9 +69,16 @@ jobs:
       run: |
         echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
           docker login -u drmjo --password-stdin
-    - name: 1.16.309
+    - name: 1.16.314
       env:
-        VERSION: 1.16.309
+        VERSION: 1.16.314
+        # empty shasum
+        SHA256SUM:
+        APP: awscli
+      run: bash build.sh
+    - name: 1.18.56
+      env:
+        VERSION: 1.18.56
         # empty shasum
         SHA256SUM:
         APP: awscli
@@ -117,7 +124,7 @@ jobs:
     - name: base
       env:
         # this version should be the aws cli version
-        VERSION: 1.16
+        VERSION: 1.18
         APP: base
       run: bash build.sh
   ide:
