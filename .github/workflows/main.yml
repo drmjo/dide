@@ -27,6 +27,12 @@ jobs:
       run: |
         echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
           docker login -u drmjo --password-stdin
+    - name: 1.18.6
+      env:
+        SHA256SUM: 62fcb9922164725c7cba5747562f2ad2f4d834ad0a458c1e4c794cc203dcdfb3
+        VERSION: 1.18.6
+        APP: kubectl
+      run: bash build.sh
     - name: 1.17.5
       env:
         SHA256SUM: 03cd1fa19f90d38005148793efdb17a9b58d01dedea641a8496b9cf228db3ab4
