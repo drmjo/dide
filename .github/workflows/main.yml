@@ -141,7 +141,7 @@ jobs:
     - name: base
       env:
         # this version should be the aws cli version
-        VERSION: 1.18
+        VERSION: 1.19
         APP: base
       run: bash build.sh
   ide:
