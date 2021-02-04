@@ -81,16 +81,16 @@ jobs:
       run: |
         echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
           docker login -u drmjo --password-stdin
-    - name: 1.16.314
+    - name: 1.18.223
       env:
-        VERSION: 1.16.314
+        VERSION: 1.18.223
         # empty shasum
         SHA256SUM:
         APP: awscli
       run: bash build.sh
-    - name: 1.18.56
+    - name: 1.19.1
       env:
-        VERSION: 1.18.56
+        VERSION: 1.19.1
         # empty shasum
         SHA256SUM:
         APP: awscli
@@ -111,6 +111,11 @@ jobs:
         VERSION: 1.18
         APP: eks
       run: bash build.sh
+    - name: 1.17
+      env:
+        VERSION: 1.17
+        APP: eks
+      run: bash build.sh
     - name: 1.16
       env:
         VERSION: 1.16
@@ -119,11 +124,6 @@ jobs:
     - name: 1.15
       env:
         VERSION: 1.15
-        APP: eks
-      run: bash build.sh
-    - name: 1.14
-      env:
-        VERSION: 1.14
         APP: eks
       run: bash build.sh
   base:
@@ -160,6 +160,11 @@ jobs:
         VERSION: 1.18
         APP: ide
       run: bash build.sh
+    - name: 1.17
+      env:
+        VERSION: 1.17
+        APP: ide
+      run: bash build.sh
     - name: 1.16
       env:
         VERSION: 1.16
@@ -168,10 +173,5 @@ jobs:
     - name: 1.15
       env:
         VERSION: 1.15
-        APP: ide
-      run: bash build.sh
-    - name: 1.14
-      env:
-        VERSION: 1.14
         APP: ide
       run: bash build.sh
