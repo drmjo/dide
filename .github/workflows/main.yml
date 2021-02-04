@@ -72,22 +72,6 @@ jobs:
         SHA256SUM: 2ff148a900c5a153ea444bebac169001397ebfb466789356cd0f077b48e7d91c
         APP: appr
       run: bash build.sh
-  awscliv2:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Git checkout
-      uses: actions/checkout@v1
-    - name: Login
-      run: |
-        echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
-          docker login -u drmjo --password-stdin
-    - name: 1.5.2
-      env:
-        VERSION: 1.5.2
-        # empty shasum
-        SHA256SUM:
-        APP: awscliv2
-      run: bash build.sh
   awscli:
     runs-on: ubuntu-latest
     steps:
