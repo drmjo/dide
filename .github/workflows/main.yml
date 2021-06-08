@@ -12,10 +12,10 @@ jobs:
       run: |
         echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
           docker login -u drmjo --password-stdin
-    - name: 3.1.3
+    - name: "3.6.0"
       env:
-        SHA256SUM: 7ca15cb5e3a76393eccd7389f2b3d20082b8c535b6689882613bfcc4a7d07c23
-        VERSION: 3.1.3
+        SHA256SUM: 0a9c80b0f211791d6a9d36022abd0d6fd125139abe6d1dcf4c5bf3bc9dcec9c8
+        VERSION:  "3.6.0"
         APP: helm
       run: bash build.sh
   kubectl:
@@ -34,10 +34,10 @@ jobs:
         APP: kubectl
       run: bash build.sh
 
-    - name: 1.20.7
+    - name: "1.20.7"
       env:
         SHA256SUM: 2ea3006a64d48657ac72223a01c6df0e5b827703263f2586da28044ea9e97daf
-        VERSION: 1.20.7
+        VERSION: "1.20.7"
         APP: kubectl
       run: bash build.sh
 
@@ -107,9 +107,9 @@ jobs:
         VERSION: 1.21
         APP: eks
       run: bash build.sh
-    - name: 1.20
+    - name: "1.20"
       env:
-        VERSION: 1.20
+        VERSION: "1.20"
         APP: eks
       run: bash build.sh
     - name: 1.19
@@ -165,9 +165,9 @@ jobs:
         VERSION: 1.21
         APP: ide
       run: bash build.sh
-    - name: 1.20
+    - name: "1.20"
       env:
-        VERSION: 1.20
+        VERSION: "1.20"
         APP: ide
       run: bash build.sh
     - name: 1.19
