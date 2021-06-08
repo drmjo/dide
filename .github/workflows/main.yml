@@ -135,7 +135,6 @@ jobs:
   base:
     needs:
     - awscli
-    - appr
     runs-on: ubuntu-latest
     steps:
     - name: Git checkout
