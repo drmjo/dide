@@ -27,12 +27,34 @@ jobs:
       run: |
         echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
           docker login -u drmjo --password-stdin
-    - name: 1.18.8
+    - name: 1.21.1
       env:
-        SHA256SUM: a076f5eff0710de94d1eb77bee458ea43b8f4d9572bbb3a3aec1edf0dde0a3e7
-        VERSION: 1.18.8
+        SHA256SUM: 58785190e2b4fc6891e01108e41f9ba5db26e04cebb7c1ac639919a931ce9233
+        VERSION: 1.21.1
         APP: kubectl
       run: bash build.sh
+
+    - name: 1.20.7
+      env:
+        SHA256SUM: 2ea3006a64d48657ac72223a01c6df0e5b827703263f2586da28044ea9e97daf
+        VERSION: 1.20.7
+        APP: kubectl
+      run: bash build.sh
+
+    - name: 1.19.11
+      env:
+        SHA256SUM: 10b3bb2526b47f52be9f39cee6e42f8b30acc5b415e7bb7b446500bb41a6fd03
+        VERSION: 1.19.11
+        APP: kubectl
+      run: bash build.sh
+
+    - name: 1.18.19
+      env:
+        SHA256SUM: 332820433bc7695801bcf6e8444856fc7daae97fc9261b918d491110d67be116
+        VERSION: 1.18.19
+        APP: kubectl
+      run: bash build.sh
+
     - name: 1.17.5
       env:
         SHA256SUM: 03cd1fa19f90d38005148793efdb17a9b58d01dedea641a8496b9cf228db3ab4
@@ -45,33 +67,7 @@ jobs:
         VERSION: 1.16.9
         APP: kubectl
       run: bash build.sh
-    - name: 1.15.12
-      env:
-        SHA256SUM: a32b762279c33cb8d8f4198f3facdae402248c3164e9b9b664c3afbd5a27472e
-        VERSION: 1.15.12
-        APP: kubectl
-      run: bash build.sh
-    - name: 1.14.10
-      env:
-        SHA256SUM: 7729c6612bec76badc7926a79b26e0d9b06cc312af46dbb80ea7416d1fce0b36
-        VERSION: 1.14.10
-        APP: kubectl
-      run: bash build.sh
-  appr:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Git checkout
-      uses: actions/checkout@v1
-    - name: Login
-      run: |
-        echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
-          docker login -u drmjo --password-stdin
-    - name: 0.7.4
-      env:
-        VERSION: 0.7.4
-        SHA256SUM: 2ff148a900c5a153ea444bebac169001397ebfb466789356cd0f077b48e7d91c
-        APP: appr
-      run: bash build.sh
+
   awscli:
     runs-on: ubuntu-latest
     steps:
@@ -106,6 +102,21 @@ jobs:
       run: |
         echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
           docker login -u drmjo --password-stdin
+    - name: 1.21
+      env:
+        VERSION: 1.21
+        APP: eks
+      run: bash build.sh
+    - name: 1.20
+      env:
+        VERSION: 1.20
+        APP: eks
+      run: bash build.sh
+    - name: 1.19
+      env:
+        VERSION: 1.19
+        APP: eks
+      run: bash build.sh
     - name: 1.18
       env:
         VERSION: 1.18
@@ -119,11 +130,6 @@ jobs:
     - name: 1.16
       env:
         VERSION: 1.16
-        APP: eks
-      run: bash build.sh
-    - name: 1.15
-      env:
-        VERSION: 1.15
         APP: eks
       run: bash build.sh
   base:
@@ -155,6 +161,21 @@ jobs:
       run: |
         echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
           docker login -u drmjo --password-stdin
+    - name: 1.21
+      env:
+        VERSION: 1.21
+        APP: ide
+      run: bash build.sh
+    - name: 1.20
+      env:
+        VERSION: 1.20
+        APP: ide
+      run: bash build.sh
+    - name: 1.19
+      env:
+        VERSION: 1.19
+        APP: ide
+      run: bash build.sh
     - name: 1.18
       env:
         VERSION: 1.18
@@ -168,10 +189,5 @@ jobs:
     - name: 1.16
       env:
         VERSION: 1.16
-        APP: ide
-      run: bash build.sh
-    - name: 1.15
-      env:
-        VERSION: 1.15
         APP: ide
       run: bash build.sh

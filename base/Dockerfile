@@ -1,17 +1,8 @@
 ARG REGISTRY
 ARG VERSION
 
-# dependencies
-FROM $REGISTRY/appr:0.7.4 as appr
-
 # start from the aws-cli image
 FROM $REGISTRY/awscli:$VERSION
-
-# add appr and enable helm plugin
-COPY --from=appr /bin/appr /bin/appr
-
-COPY helm-registry /root/.helm/plugins/helm-registry
-RUN chmod 755 /root/.helm/plugins/helm-registry/cnr.sh
 
 # Install zsh and some helpfull tools
 RUN apt-get update -y \
@@ -40,9 +31,9 @@ RUN curl -OL https://github.com/wercker/stern/releases/download/${STERN_VERSION}
     mv stern_linux_amd64 /bin/stern
 
 # install SOPS
-ARG SOPS_VERSION=3.4.0
+ARG SOPS_VERSION=v3.7.1
 ENV SOPS_VERSION=$SOPS_VERSION
-ARG SOPS_SHA256SUM=369ceb213c6fd84d76d89d82f7a63e2226b00f5128c7bb84c7ebcfaffbde6139
+ARG SOPS_SHA256SUM=185348fd77fc160d5bdf3cd20ecbc796163504fd3df196d7cb29000773657b74
 ENV SOPS_SHA256SUM=$SOPS_SHA256SUM
 RUN curl -L -o sops https://github.com/mozilla/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.linux && \
     echo "${SOPS_SHA256SUM} sops" > sops.sha256 && \
