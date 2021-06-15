@@ -2,7 +2,7 @@ ARG REGISTRY
 
 ARG VERSION
 ARG KUBECTL_VERSION=${VERSION}
-ARG HELM_VERSION=3.1
+ARG HELM_VERSION=3.6
 ARG TERRAFORM_VERSION
 
 FROM $REGISTRY/kubectl:$KUBECTL_VERSION as kubectl
@@ -22,5 +22,5 @@ COPY --from=helm      /bin/helm         /bin/helm
 COPY --from=helm      /bin/helmfile     /bin/helmfile
 
 # RUN helm init --client-only
-RUN helm plugin install https://github.com/databus23/helm-diff --version v3.1.1
+RUN helm plugin install https://github.com/databus23/helm-diff --version v3.1.3
 RUN helm plugin install https://github.com/futuresimple/helm-secrets --version master
