@@ -1,4 +1,4 @@
-FROM python:3.8-buster
+FROM python:3.8-bullseye
 
 RUN apt-get update -y \
     && apt-get upgrade -y \
@@ -8,13 +8,12 @@ RUN apt-get update -y \
     && apt-get clean
 
 ARG VERSION
+ARG SHA256SUM
 
-# install the aws command line tools
-RUN pip install \
-    --no-cache-dir \
-        awscli==$VERSION \
-        boto3 \
-        troposphere \
-        awacs
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-${VERSION}.zip" -o "awscliv2.zip" && \
+    echo "${SHA256SUM} awscliv2.zip" > awscliv2.zip.sha256 && \
+    sha256sum -c awscliv2.zip.sha256 && \
+    unzip awscliv2.zip && \
+    ./aws/install
 
 ENTRYPOINT [ "/usr/local/bin/aws" ]

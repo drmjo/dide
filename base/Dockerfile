@@ -50,8 +50,8 @@ RUN mkdir $ZSH/completions
 RUN git clone https://github.com/ahmetb/kubectx /kubectx \
     && cp /kubectx/kubectx /bin/kctx \
     && cp /kubectx/kubens /bin/kns \
-    && cp /kubectx/completion/kubectx.zsh $ZSH/completions/_kubectx \
-    && cp /kubectx/completion/kubens.zsh $ZSH/completions/_kubens \
+    && cp /kubectx/completion/_kubectx.zsh $ZSH/completions/_kubectx \
+    && cp /kubectx/completion/_kubens.zsh $ZSH/completions/_kubens \
     && rm -rf /kubectx
 
 # drmjo theme
