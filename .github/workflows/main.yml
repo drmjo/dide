@@ -18,6 +18,23 @@ jobs:
         VERSION:  "3.8.0"
         APP: helm
       run: bash build.sh
+
+  terragrunt:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Git checkout
+      uses: actions/checkout@v1
+    - name: Login
+      run: |
+        echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
+          docker login -u drmjo --password-stdin
+    - name: 0.38.6
+      env:
+        SHA256SUM: 2fef737ade1393acd744dcacbf4a6191374499ca0499b85c795d7a4abd2c1483
+        VERSION: 0.38.6
+        APP: terragrunt
+      run: bash build.sh
+
   kubectl:
     runs-on: ubuntu-latest
     steps:
