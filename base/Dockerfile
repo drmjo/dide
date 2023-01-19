@@ -20,15 +20,15 @@ RUN apt-get update -y \
     && apt-get clean
 
 # install stern for logging
-ARG STERN_VERSION=1.11.0
+ARG STERN_VERSION=1.22.0
 ENV STERN_VERSION=$STERN_VERSION
-ARG STERN_SHA256SUM=e0b39dc26f3a0c7596b2408e4fb8da533352b76aaffdc18c7ad28c833c9eb7db
+ARG STERN_SHA256SUM=6eff028d104b53c8a53c3af752a52292ddb2024b469ce5ab05aee2f0954bde72
 ENV STERN_SHA256SUM=$STERN_SHA256SUM
-RUN curl -OL https://github.com/wercker/stern/releases/download/${STERN_VERSION}/stern_linux_amd64 && \
-    echo "${STERN_SHA256SUM} stern_linux_amd64" > stern_linux_amd64.sha256 && \
+RUN curl -OL https://github.com/stern/stern/releases/download/v${STERN_VERSION}/stern_${STERN_VERSION}_linux_amd64.tar.gz && \
+    echo "${STERN_SHA256SUM} stern_${STERN_VERSION}_linux_amd64.tar.gz" > stern_${STERN_VERSION}_linux_amd64.tar.gz.sha256 && \
     sha256sum -c stern_linux_amd64.sha256 && \
-    chmod 755 stern_linux_amd64 && \
-    mv stern_linux_amd64 /bin/stern
+    tar -xzvf stern_${STERN_VERSION}_linux_amd64.tar.gz && \
+    mv stern /bin/stern
 
 # install SOPS
 ARG SOPS_VERSION=v3.7.1
