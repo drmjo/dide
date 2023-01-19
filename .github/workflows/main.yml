@@ -78,11 +78,11 @@ jobs:
       run: |
         echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
           docker login -u drmjo --password-stdin
-    - name: 2.4.22
+    - name: 2.9.13
       env:
-        VERSION: 2.4.22
+        VERSION: 2.9.13
         # empty shasum
-        SHA256SUM: 30b833aeb05a122aa05c7d508cb80d1ea08292249846091f4a1744b4c197a615
+        SHA256SUM: 2a9a88327cd01f17dcf0b19cdbe060242d1aff12b8aed4e01162cb74270d9b85
         APP: awscli
       run: bash build.sh
   eks:
