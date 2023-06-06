@@ -9,7 +9,7 @@ RUN curl -OL https://github.com/gruntwork-io/terragrunt/releases/download/v${VER
     sha256sum -c terragrunt_linux_amd64.sha256 && \
     chmod 755 terragrunt_linux_amd64
 
-FROM hashicorp/terraform:1.2.6
+FROM hashicorp/terraform:1.4.2
 
 COPY --from=builder /terragrunt_linux_amd64 /bin/terragrunt
 # 4ec12895c351e63181df4a446c80b7892f4258b9869de8a406e45902b227535f  terragrunt_darwin_amd64

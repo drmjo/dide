@@ -28,10 +28,10 @@ jobs:
       run: |
         echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
           docker login -u drmjo --password-stdin
-    - name: 0.38.6
+    - name: 0.42.7
       env:
-        SHA256SUM: 2fef737ade1393acd744dcacbf4a6191374499ca0499b85c795d7a4abd2c1483
-        VERSION: 0.38.6
+        SHA256SUM: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+        VERSION: 0.42.7
         APP: terragrunt
       run: bash build.sh
 
