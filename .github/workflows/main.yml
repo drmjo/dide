@@ -30,7 +30,7 @@ jobs:
           docker login -u drmjo --password-stdin
     - name: 0.42.7
       env:
-        SHA256SUM: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+        SHA256SUM: 7b315c053bedd2ac3810ce3545e9378edbeb3a984ac7cb396dd85deffd54ab10
         VERSION: 0.42.7
         APP: terragrunt
       run: bash build.sh
