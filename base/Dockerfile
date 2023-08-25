@@ -20,9 +20,9 @@ RUN apt-get update -y \
     && apt-get clean
 
 # install stern for logging
-ARG STERN_VERSION=1.22.0
+ARG STERN_VERSION=1.26.0
 ENV STERN_VERSION=$STERN_VERSION
-ARG STERN_SHA256SUM=6eff028d104b53c8a53c3af752a52292ddb2024b469ce5ab05aee2f0954bde72
+ARG STERN_SHA256SUM=de79474d9197582e38da0dccc8cd14af23d6b52b72bee06b62943c19ab95125e
 ENV STERN_SHA256SUM=$STERN_SHA256SUM
 RUN curl -OL https://github.com/stern/stern/releases/download/v${STERN_VERSION}/stern_${STERN_VERSION}_linux_amd64.tar.gz && \
     echo "${STERN_SHA256SUM} stern_${STERN_VERSION}_linux_amd64.tar.gz" > stern_${STERN_VERSION}_linux_amd64.tar.gz.sha256 && \
@@ -31,9 +31,9 @@ RUN curl -OL https://github.com/stern/stern/releases/download/v${STERN_VERSION}/
     mv stern /bin/stern
 
 # install SOPS
-ARG SOPS_VERSION=v3.7.1
+ARG SOPS_VERSION=v3.7.3
 ENV SOPS_VERSION=$SOPS_VERSION
-ARG SOPS_SHA256SUM=185348fd77fc160d5bdf3cd20ecbc796163504fd3df196d7cb29000773657b74
+ARG SOPS_SHA256SUM=0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
 ENV SOPS_SHA256SUM=$SOPS_SHA256SUM
 RUN curl -L -o sops https://github.com/mozilla/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.linux && \
     echo "${SOPS_SHA256SUM} sops" > sops.sha256 && \
