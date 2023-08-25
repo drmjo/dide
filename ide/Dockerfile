@@ -21,5 +21,5 @@ COPY --from=kubectl   /bin/kubectl      /bin/kubectl
 COPY --from=helm      /bin/helm         /bin/helm
 
 # RUN helm init --client-only
-RUN helm plugin install https://github.com/databus23/helm-diff --version v3.4.2
+RUN helm plugin install https://github.com/databus23/helm-diff --version v3.8.1
 RUN helm plugin install https://github.com/futuresimple/helm-secrets --version master
