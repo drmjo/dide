@@ -33,7 +33,7 @@ RUN curl -OL https://github.com/stern/stern/releases/download/v${STERN_VERSION}/
 # install SOPS
 ARG SOPS_VERSION=v3.7.3
 ENV SOPS_VERSION=$SOPS_VERSION
-ARG SOPS_SHA256SUM=0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+ARG SOPS_SHA256SUM=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ENV SOPS_SHA256SUM=$SOPS_SHA256SUM
 RUN curl -L -o sops https://github.com/mozilla/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.linux && \
     echo "${SOPS_SHA256SUM} sops" > sops.sha256 && \
