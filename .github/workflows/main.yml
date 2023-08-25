@@ -12,10 +12,10 @@ jobs:
       run: |
         echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
           docker login -u drmjo --password-stdin
-    - name: "3.8.0"
+    - name: 3.12.3
       env:
-        SHA256SUM: 8408c91e846c5b9ba15eb6b1a5a79fc22dd4d33ac6ea63388e5698d1b2320c8b
-        VERSION:  "3.8.0"
+        SHA256SUM: 1b2313cd198d45eab00cc37c38f6b1ca0a948ba279c29e322bdf426d406129b5
+        VERSION:  3.12.3
         APP: helm
       run: bash build.sh
 
@@ -28,10 +28,10 @@ jobs:
       run: |
         echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
           docker login -u drmjo --password-stdin
-    - name: 0.42.7
+    - name: 0.50.8
       env:
-        SHA256SUM: 6e7ce3f0c72df54ce364e1d799bf286d1ea0846e1e01569f88dd8a46e95dea18
-        VERSION: 0.42.7
+        SHA256SUM: 5e8e233c8e4cabcbf12c09de3e13c2b1fba7e10da122799696b274de0ed518a8
+        VERSION: 0.50.8
         APP: terragrunt
       run: bash build.sh
 
@@ -44,38 +44,38 @@ jobs:
       run: |
         echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
           docker login -u drmjo --password-stdin
-    - name: 1.26.1
+    - name: 1.28.1
       env:
-        SHA256SUM: d57be22cfa25f7427cfb538cfc8853d763878f8b36c76ce93830f6f2d67c6e5d
-        VERSION: 1.26.1
+        SHA256SUM: e7a7d6f9d06fab38b4128785aa80f65c54f6675a0d2abef655259ddd852274e1
+        VERSION: 1.28.1
         APP: kubectl
       run: bash build.sh
 
-    - name: 1.25.6
+    - name: 1.27.5
       env:
-        SHA256SUM: ba876aef0e9d7e2e8fedac036ec194de5ec9b6d2953e30ff82a2758c6ba32174
-        VERSION: 1.25.6
+        SHA256SUM: 9a091fb65e4cf4e8be3ce9a21c79210177dd7ce31a2998ec638c92f37f058bcd
+        VERSION: 1.27.5
         APP: kubectl
       run: bash build.sh
 
-    - name: 1.24.10
+    - name: 1.26.8
       env:
-        SHA256SUM: d8e9cd9bb073ff09e2f2a74cf48e94a9b9d4f2fa2e2dd91b68b01f64e7061a3b
-        VERSION: 1.24.10
+        SHA256SUM: d8e0dba258d1096f95bb6746ca359db2ee8abe226e777f89dc8a5d1bb76795aa
+        VERSION: 1.26.8
         APP: kubectl
       run: bash build.sh
 
-    - name: 1.23.16
+    - name: 1.25.13
       env:
-        SHA256SUM: 5f914edc9dbfbe1b8b8dc0f5dbbac28720a8dffeb940e3339c371e3612c37e48
-        VERSION: 1.23.16
+        SHA256SUM: 22c5d5cb95b671ea7d7accd77e60e4a787b6d40a6b8ba4d6c364cb3ca818c29a
+        VERSION: 1.25.13
         APP: kubectl
       run: bash build.sh
 
-    - name: 1.22.17
+    - name: 1.24.17
       env:
-        SHA256SUM: 7506a0ae7a59b35089853e1da2b0b9ac0258c5309ea3d165c3412904a9051d48
-        VERSION: 1.22.17
+        SHA256SUM: 3e9588e3326c7110a163103fc3ea101bb0e85f4d6fd228cf928fa9a2a20594d5
+        VERSION: 1.24.17
         APP: kubectl
       run: bash build.sh
 
@@ -88,11 +88,10 @@ jobs:
       run: |
         echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
           docker login -u drmjo --password-stdin
-    - name: 2.9.13
+    - name: 2.13.13
       env:
-        VERSION: 2.9.13
-        # empty shasum
-        SHA256SUM: 2a9a88327cd01f17dcf0b19cdbe060242d1aff12b8aed4e01162cb74270d9b85
+        VERSION: 2.13.13
+        SHA256SUM: 7204f9facf709ad8869a02d678cf67261668431460e67436cdfd239059a2ac8f
         APP: awscli
       run: bash build.sh
   eks:
@@ -106,6 +105,16 @@ jobs:
       run: |
         echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
           docker login -u drmjo --password-stdin
+    - name: 1.28
+      env:
+        VERSION: 1.28
+        APP: eks
+      run: bash build.sh
+    - name: 1.27
+      env:
+        VERSION: 1.27
+        APP: eks
+      run: bash build.sh
     - name: 1.26
       env:
         VERSION: 1.26
@@ -119,16 +128,6 @@ jobs:
     - name: 1.24
       env:
         VERSION: 1.24
-        APP: eks
-      run: bash build.sh
-    - name: 1.23
-      env:
-        VERSION: 1.23
-        APP: eks
-      run: bash build.sh
-    - name: 1.22
-      env:
-        VERSION: 1.22
         APP: eks
       run: bash build.sh
 
@@ -146,7 +145,7 @@ jobs:
     - name: base
       env:
         # this version should be the aws cli version
-        VERSION: 2.9
+        VERSION: 2.13
         APP: base
       run: bash build.sh
   ide:
@@ -160,6 +159,16 @@ jobs:
       run: |
         echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
           docker login -u drmjo --password-stdin
+    - name: 1.28
+      env:
+        VERSION: 1.28
+        APP: ide
+      run: bash build.sh
+    - name: 1.27
+      env:
+        VERSION: 1.27
+        APP: ide
+      run: bash build.sh
     - name: 1.26
       env:
         VERSION: 1.26
@@ -173,15 +182,5 @@ jobs:
     - name: 1.24
       env:
         VERSION: 1.24
-        APP: ide
-      run: bash build.sh
-    - name: 1.23
-      env:
-        VERSION: 1.23
-        APP: ide
-      run: bash build.sh
-    - name: 1.22
-      env:
-        VERSION: 1.22
         APP: ide
       run: bash build.sh
