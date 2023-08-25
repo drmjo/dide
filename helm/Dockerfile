@@ -12,6 +12,5 @@ RUN curl -O https://get.helm.sh/helm-v${VERSION}-linux-amd64.tar.gz && \
 FROM debian:11-slim
 
 COPY --from=builder /linux-amd64/helm /bin/helm
-COPY --from=builder /helmfile_linux_amd64 /bin/helmfile
 
 ENTRYPOINT [ "/bin/helm" ]
