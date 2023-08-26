@@ -30,17 +30,6 @@ RUN curl -OL https://github.com/stern/stern/releases/download/v${STERN_VERSION}/
     tar -xzvf stern_${STERN_VERSION}_linux_amd64.tar.gz && \
     mv stern /bin/stern
 
-# install SOPS
-ARG SOPS_VERSION=v3.7.3
-ENV SOPS_VERSION=$SOPS_VERSION
-ARG SOPS_SHA256SUM=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
-ENV SOPS_SHA256SUM=$SOPS_SHA256SUM
-RUN curl -L -o sops https://github.com/mozilla/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.linux && \
-    echo "${SOPS_SHA256SUM} sops" > sops.sha256 && \
-    sha256sum -c sops.sha256 && \
-    chmod 744 sops && \
-    mv sops /bin/sops
-
 # set up the oh-my-zsh theme
 ENV ZSH /usr/local/share/zsh/oh-my-zsh
 RUN git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git $ZSH
