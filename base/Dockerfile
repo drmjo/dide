@@ -17,6 +17,7 @@ RUN apt-get update -y \
         less \
         man-db \
         zsh \
+        amazon-ecr-credential-helper \
     && apt-get clean
 
 # install stern for logging

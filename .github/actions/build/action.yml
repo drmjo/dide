@@ -1,0 +1,38 @@
+name: Build Action
+description: Reusable build steps for different apps and versions
+inputs:
+  version:
+    description: 'Version of the app to build'
+    required: true
+    type: string
+  sha:
+    description: 'SHA256 checksum (optional)'
+    required: false
+    type: string
+  app:
+    description: 'App name'
+    required: true
+    type: string
+runs:
+  using: "composite"
+  steps:
+    - name: Git checkout
+      uses: actions/checkout@v4
+
+    - name: Login
+      run: |
+        echo ${{ env.DOCKERHUB_PASSWORD }} | docker login -u drmjo --password-stdin
+      shell: bash
+
+    - name: Set Environment Variables
+      run: |
+        echo "VERSION=${{ inputs.version }}" >> $GITHUB_ENV
+        echo "APP=${{ inputs.app }}" >> $GITHUB_ENV
+        if [ "${{ inputs.sha }}" ]; then
+          echo "SHA256SUM=${{ inputs.sha }}" >> $GITHUB_ENV
+        fi
+      shell: bash
+
+    - name: Build ${{ inputs.app }} ${{ inputs.version }}
+      run: bash build.sh
+      shell: bash

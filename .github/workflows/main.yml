@@ -5,182 +5,131 @@ on: [push]
 jobs:
   helm:
     runs-on: ubuntu-latest
+    env:
+      DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
     steps:
     - name: Git checkout
-      uses: actions/checkout@v1
-    - name: Login
-      run: |
-        echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
-          docker login -u drmjo --password-stdin
-    - name: 3.12.3
-      env:
-        SHA256SUM: 1b2313cd198d45eab00cc37c38f6b1ca0a948ba279c29e322bdf426d406129b5
-        VERSION:  3.12.3
-        APP: helm
-      run: bash build.sh
+      uses: actions/checkout@v4
+    - name: Build helm ${{ matrix.version }}
+      uses: ./.github/actions/build
+      with:
+        app: helm
+        version: 3.15.1
+        sha: 7b20e7791c04ea71e7fe0cbe11f1a8be4a55a692898b57d9db28f3b0c1d52f11
 
   terragrunt:
     runs-on: ubuntu-latest
+    env:
+      DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
     steps:
     - name: Git checkout
-      uses: actions/checkout@v1
-    - name: Login
-      run: |
-        echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
-          docker login -u drmjo --password-stdin
-    - name: 0.50.8
-      env:
-        SHA256SUM: 5e8e233c8e4cabcbf12c09de3e13c2b1fba7e10da122799696b274de0ed518a8
-        VERSION: 0.50.8
-        APP: terragrunt
-      run: bash build.sh
+      uses: actions/checkout@v4
+    - name: Build terragrunt ${{ matrix.version }}
+      uses: ./.github/actions/build
+      with:
+        app: terragrunt
+        version: 0.58.14
+        sha: 2abc9c2729a9a16c5672c3db71b333381d25fa44a978bba86dab2c0b3246b4de
 
   kubectl:
     runs-on: ubuntu-latest
+    env:
+      DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+    strategy:
+      matrix:
+        include:
+          - version: 1.30.1
+            sha: 5b86f0b06e1a5ba6f8f00e2b01e8ed39407729c4990aeda961f83a586f975e8a
+          - version: 1.29.5
+            sha: 603c8681fc0d8609c851f9cc58bcf55eeb97e2934896e858d0232aa8d1138366
+          - version: 1.28.10
+            sha: 389c17a9700a4b01ebb055e39b8bc0886330497440dde004b5ed90f2a3a028db
+          - version: 1.27.14
+            sha: 1d2431c68bb6dfa9de3cd40fd66d97a9ac73593c489f9467249eea43e9c16a1e
+          - version: 1.26.13
+            sha: e4bad4273431f9f5f05f27f5c2054cbbad6d9ee00b85e0810cb4ef0489b02571
+          - version: 1.25.16
+            sha: 5a9bc1d3ebfc7f6f812042d5f97b82730f2bdda47634b67bddf36ed23819ab17
     steps:
     - name: Git checkout
-      uses: actions/checkout@v1
-    - name: Login
-      run: |
-        echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
-          docker login -u drmjo --password-stdin
-    - name: 1.28.1
-      env:
-        SHA256SUM: e7a7d6f9d06fab38b4128785aa80f65c54f6675a0d2abef655259ddd852274e1
-        VERSION: 1.28.1
-        APP: kubectl
-      run: bash build.sh
-
-    - name: 1.27.5
-      env:
-        SHA256SUM: 9a091fb65e4cf4e8be3ce9a21c79210177dd7ce31a2998ec638c92f37f058bcd
-        VERSION: 1.27.5
-        APP: kubectl
-      run: bash build.sh
-
-    - name: 1.26.8
-      env:
-        SHA256SUM: d8e0dba258d1096f95bb6746ca359db2ee8abe226e777f89dc8a5d1bb76795aa
-        VERSION: 1.26.8
-        APP: kubectl
-      run: bash build.sh
-
-    - name: 1.25.13
-      env:
-        SHA256SUM: 22c5d5cb95b671ea7d7accd77e60e4a787b6d40a6b8ba4d6c364cb3ca818c29a
-        VERSION: 1.25.13
-        APP: kubectl
-      run: bash build.sh
-
-    - name: 1.24.17
-      env:
-        SHA256SUM: 3e9588e3326c7110a163103fc3ea101bb0e85f4d6fd228cf928fa9a2a20594d5
-        VERSION: 1.24.17
-        APP: kubectl
-      run: bash build.sh
+      uses: actions/checkout@v4
+    - name: Build kubectl
+      uses: ./.github/actions/build
+      with:
+        app: kubectl
+        version: ${{ matrix.version }}
+        sha: ${{ matrix.sha }}
 
   awscli:
     runs-on: ubuntu-latest
+    env:
+      DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
     steps:
     - name: Git checkout
-      uses: actions/checkout@v1
-    - name: Login
-      run: |
-        echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
-          docker login -u drmjo --password-stdin
-    - name: 2.13.13
-      env:
-        VERSION: 2.13.13
-        SHA256SUM: 7204f9facf709ad8869a02d678cf67261668431460e67436cdfd239059a2ac8f
-        APP: awscli
-      run: bash build.sh
+      uses: actions/checkout@v4
+    - name: Build awscli ${{ matrix.version }}
+      uses: ./.github/actions/build
+      with:
+        app: awscli
+        version: 2.16.4
+        sha: 5b0c341f718c921f018791b2ba797470395bbc9c6c17c0b3f447910045fbc3c6
+
   eks:
-    needs:
-    - awscli
+    needs: awscli
     runs-on: ubuntu-latest
+    env:
+      DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+    strategy:
+      matrix:
+        include:
+          - version: "1.30"
+          - version: 1.29
+          - version: 1.28
+          - version: 1.27
+          - version: 1.26
+          - version: 1.25
     steps:
     - name: Git checkout
-      uses: actions/checkout@v1
-    - name: Login
-      run: |
-        echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
-          docker login -u drmjo --password-stdin
-    - name: 1.28
-      env:
-        VERSION: 1.28
-        APP: eks
-      run: bash build.sh
-    - name: 1.27
-      env:
-        VERSION: 1.27
-        APP: eks
-      run: bash build.sh
-    - name: 1.26
-      env:
-        VERSION: 1.26
-        APP: eks
-      run: bash build.sh
-    - name: 1.25
-      env:
-        VERSION: 1.25
-        APP: eks
-      run: bash build.sh
-    - name: 1.24
-      env:
-        VERSION: 1.24
-        APP: eks
-      run: bash build.sh
+      uses: actions/checkout@v4
+    - name: Build eks
+      uses: ./.github/actions/build
+      with:
+        app: eks
+        version: ${{ matrix.version }}
 
   base:
-    needs:
-    - awscli
+    needs: awscli
     runs-on: ubuntu-latest
+    env:
+      DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
     steps:
     - name: Git checkout
-      uses: actions/checkout@v1
-    - name: Login
-      run: |
-        echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
-          docker login -u drmjo --password-stdin
-    - name: base
-      env:
-        # this version should be the aws cli version
-        VERSION: 2.13
-        APP: base
-      run: bash build.sh
+      uses: actions/checkout@v4
+    - name: Build base
+      uses: ./.github/actions/build
+      with:
+        app: base
+        version: 2.16
+
   ide:
-    needs:
-    - base
+    needs: base
     runs-on: ubuntu-latest
+    env:
+      DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+    strategy:
+      matrix:
+        include:
+          - version: "1.30"
+          - version: 1.29
+          - version: 1.28
+          - version: 1.27
+          - version: 1.26
+          - version: 1.25
     steps:
     - name: Git checkout
-      uses: actions/checkout@v1
-    - name: Login
-      run: |
-        echo ${{ secrets.DOCKERHUB_PASSWORD }} | \
-          docker login -u drmjo --password-stdin
-    - name: 1.28
-      env:
-        VERSION: 1.28
-        APP: ide
-      run: bash build.sh
-    - name: 1.27
-      env:
-        VERSION: 1.27
-        APP: ide
-      run: bash build.sh
-    - name: 1.26
-      env:
-        VERSION: 1.26
-        APP: ide
-      run: bash build.sh
-    - name: 1.25
-      env:
-        VERSION: 1.25
-        APP: ide
-      run: bash build.sh
-    - name: 1.24
-      env:
-        VERSION: 1.24
-        APP: ide
-      run: bash build.sh
+      uses: actions/checkout@v4
+    - name: Build ide
+      uses: ./.github/actions/build
+      with:
+        app: ide
+        version: ${{ matrix.version }}
