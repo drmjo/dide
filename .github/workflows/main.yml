@@ -41,15 +41,15 @@ jobs:
           - version: 1.33.0
             sha: 9efe8d3facb23e1618cba36fb1c4e15ac9dc3ed5a2c2e18109e4a66b2bac12dc
           - version: 1.32.3
-            sha: 8906b3f320e55523ca3b77e892e6b60644c31e57c1932a160b0f32144f442e24
+            sha: ab209d0c5134b61486a0486585604a616a5bb2fc07df46d304b3c95817b2d79f
           - version: 1.31.5
-            sha: 7e73f9cd2bc66e5f3b44b5f02fe06954cd2cd28a2963534acb91ed35502cba08
+            sha: fbecbfd375b3686002c2e81d51c390172f5ffba3d6b47920d55342cb03f557af
           - version: 1.30.2
-            sha: c51590af30346dd613cc86e1aeae5e6889beb34a46cf851225303832951c525c
+            sha: c6e9c45ce3f82c90663e3c30db3b27c167e8b19d83ed4048b61c1013f6a7c66e
           - version: 1.29.6
-            sha: 51acf09b122cb27d7b0935279164970c6e744d957de0d8b7d31a996b8c8623c0
+            sha: 339553c919874ebe3b719e9e1fcd68b55bc8875f9b5a005cf4c028738d54d309
           - version: 1.28.11
-            sha: 6e44c0eed0a194bc50730e4f7e50b54896d93c512f357d7eba56f96df0c14ef5
+            sha: 1dba63e1a5c9520fc516c6e817924d927b9b83b8e08254c8fe2a2edb65da7a9c
     steps:
     - name: Git checkout
       uses: actions/checkout@v4
