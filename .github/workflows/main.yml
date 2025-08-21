@@ -39,7 +39,7 @@ jobs:
       matrix:
         include:
           - version: 1.33.0
-            sha: 5e3b40533e2c12ada54d8bd8e5ca940a6a0c51d8f85228db5053c08a89c121ef
+            sha: 9efe8d3facb23e1618cba36fb1c4e15ac9dc3ed5a2c2e18109e4a66b2bac12dc
           - version: 1.32.3
             sha: 8906b3f320e55523ca3b77e892e6b60644c31e57c1932a160b0f32144f442e24
           - version: 1.31.5
