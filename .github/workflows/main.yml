@@ -38,18 +38,18 @@ jobs:
     strategy:
       matrix:
         include:
-          - version: 1.30.1
-            sha: 5b86f0b06e1a5ba6f8f00e2b01e8ed39407729c4990aeda961f83a586f975e8a
-          - version: 1.29.5
-            sha: 603c8681fc0d8609c851f9cc58bcf55eeb97e2934896e858d0232aa8d1138366
-          - version: 1.28.10
-            sha: 389c17a9700a4b01ebb055e39b8bc0886330497440dde004b5ed90f2a3a028db
-          - version: 1.27.14
-            sha: 1d2431c68bb6dfa9de3cd40fd66d97a9ac73593c489f9467249eea43e9c16a1e
-          - version: 1.26.13
-            sha: e4bad4273431f9f5f05f27f5c2054cbbad6d9ee00b85e0810cb4ef0489b02571
-          - version: 1.25.16
-            sha: 5a9bc1d3ebfc7f6f812042d5f97b82730f2bdda47634b67bddf36ed23819ab17
+          - version: 1.33.0
+            sha: 5e3b40533e2c12ada54d8bd8e5ca940a6a0c51d8f85228db5053c08a89c121ef
+          - version: 1.32.3
+            sha: 8906b3f320e55523ca3b77e892e6b60644c31e57c1932a160b0f32144f442e24
+          - version: 1.31.5
+            sha: 7e73f9cd2bc66e5f3b44b5f02fe06954cd2cd28a2963534acb91ed35502cba08
+          - version: 1.30.2
+            sha: c51590af30346dd613cc86e1aeae5e6889beb34a46cf851225303832951c525c
+          - version: 1.29.6
+            sha: 51acf09b122cb27d7b0935279164970c6e744d957de0d8b7d31a996b8c8623c0
+          - version: 1.28.11
+            sha: 6e44c0eed0a194bc50730e4f7e50b54896d93c512f357d7eba56f96df0c14ef5
     steps:
     - name: Git checkout
       uses: actions/checkout@v4
@@ -71,8 +71,8 @@ jobs:
       uses: ./.github/actions/build
       with:
         app: awscli
-        version: 2.16.4
-        sha: 5b0c341f718c921f018791b2ba797470395bbc9c6c17c0b3f447910045fbc3c6
+        version: 2.28.14
+        sha: 2bc0f156ca5beeba3f7a0d50a741c5f666235f618d7ffee3b6c3cbce1730b3c6
 
   eks:
     needs: awscli
@@ -82,12 +82,12 @@ jobs:
     strategy:
       matrix:
         include:
+          - version: "1.33"
+          - version: "1.32"
+          - version: "1.31"
           - version: "1.30"
-          - version: 1.29
-          - version: 1.28
-          - version: 1.27
-          - version: 1.26
-          - version: 1.25
+          - version: "1.29"
+          - version: "1.28"
     steps:
     - name: Git checkout
       uses: actions/checkout@v4
@@ -119,12 +119,12 @@ jobs:
     strategy:
       matrix:
         include:
+          - version: "1.33"
+          - version: "1.32"
+          - version: "1.31"
           - version: "1.30"
-          - version: 1.29
-          - version: 1.28
-          - version: 1.27
-          - version: 1.26
-          - version: 1.25
+          - version: "1.29"
+          - version: "1.28"
     steps:
     - name: Git checkout
       uses: actions/checkout@v4
