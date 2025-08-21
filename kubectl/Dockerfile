@@ -10,7 +10,7 @@ ARG VERSION=1.10.5
 ENV VERSION=$VERSION
 ARG SHA256SUM=a9e7f82e516aa8a652bc485620483ea964eb940787cabf890d7eab96eaac294d
 ENV SHA256SUM=$SHA256SUM
-RUN curl -OL https://storage.googleapis.com/kubernetes-release/release/v${VERSION}/bin/linux/amd64/kubectl && \
+RUN curl -OL https://dl.k8s.io/release/v${VERSION}/bin/linux/amd64/kubectl && \
     echo "${SHA256SUM} kubectl" > kubectl.sha256 && \
     sha256sum -c kubectl.sha256 && \
     chmod 755 kubectl
