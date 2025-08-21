@@ -1,4 +1,4 @@
-FROM buildpack-deps:bullseye as builder
+FROM buildpack-deps:bullseye AS builder
 
 # 1.11.0 7fc84102a20aba4c766245714ce9555e3bf5d4116aab38a15b11419070a0fa90
 # 1.10.5 a9e7f82e516aa8a652bc485620483ea964eb940787cabf890d7eab96eaac294d

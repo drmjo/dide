@@ -1,8 +1,8 @@
 FROM buildpack-deps:bullseye as builder
 
-ARG VERSION=0.37.2
+ARG VERSION=0.85.1
 ENV VERSION=$VERSION
-ARG SHA256SUM=c5c8d5d7679951c3a851d79bbc38774d8f7713d528526225673569b36ff749ce
+ARG SHA256SUM=7662eed6fa23cff352c996600c1cfdab085f19161cb6bd528e4125f31507f712
 ENV SHA256SUM=$SHA256SUM
 RUN curl -OL https://github.com/gruntwork-io/terragrunt/releases/download/v${VERSION}/terragrunt_linux_amd64 && \
     echo "${SHA256SUM} terragrunt_linux_amd64" > terragrunt_linux_amd64.sha256 && \
