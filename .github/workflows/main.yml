@@ -72,7 +72,7 @@ jobs:
       with:
         app: awscli
         version: 2.28.14
-        sha: 2bc0f156ca5beeba3f7a0d50a741c5f666235f618d7ffee3b6c3cbce1730b3c6
+        sha: fc41f9798bd3d22c47c51fd710812479c99b80dd740dacc11cb158f0e04ed9c6
 
   eks:
     needs: awscli
