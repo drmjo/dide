@@ -5,8 +5,8 @@ ARG KUBECTL_VERSION=${VERSION}
 ARG HELM_VERSION=3.12
 ARG TERRAFORM_VERSION
 
-FROM $REGISTRY/kubectl:$KUBECTL_VERSION as kubectl
-FROM $REGISTRY/helm:$HELM_VERSION       as helm
+FROM $REGISTRY/kubectl:$KUBECTL_VERSION AS kubectl
+FROM $REGISTRY/helm:$HELM_VERSION       AS helm
 
 FROM $REGISTRY/base:2.13
 
@@ -20,4 +20,4 @@ RUN mkdir -p \
 COPY --from=kubectl   /bin/kubectl      /bin/kubectl
 COPY --from=helm      /bin/helm         /bin/helm
 
-RUN helm plugin install https://github.com/databus23/helm-diff --version v3.8.1
+RUN helm plugin install https://github.com/databus23/helm-diff --version v3.12.5
