@@ -23,7 +23,7 @@ RUN apt-get update -y \
 # install stern for logging
 ARG STERN_VERSION=1.28.0
 ENV STERN_VERSION=$STERN_VERSION
-ARG STERN_SHA256SUM=8d5e58ba5730e58d288885f0dfee5d148ab372a8dd2ec0382b599dfb0f8719f2
+ARG STERN_SHA256SUM=1501989591f7cf9b946ff38c24453cda0c672932acf2271ef6e894f5cfb384ed
 ENV STERN_SHA256SUM=$STERN_SHA256SUM
 RUN curl -OL https://github.com/stern/stern/releases/download/v${STERN_VERSION}/stern_${STERN_VERSION}_linux_amd64.tar.gz && \
     echo "${STERN_SHA256SUM} stern_${STERN_VERSION}_linux_amd64.tar.gz" > stern_${STERN_VERSION}_linux_amd64.tar.gz.sha256 && \
