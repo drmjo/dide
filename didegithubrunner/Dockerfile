@@ -3,7 +3,9 @@ FROM ghcr.io/actions/actions-runner:latest AS runner-src
 
 # --- Stage 2: your runtime image (already has your tools) ---
 ARG VERSION=1.33
-FROM drmjo/ide:$VERSION
+ARG REGISTRY=docker.io/drmjo
+
+FROM $REGISTRY/ide:$VERSION
 
 # Create the runner user if it doesn't exist (UID 1000 is what ARC expects)
 ARG RUNNER_UID=1000
