@@ -122,3 +122,20 @@ jobs:
       with:
         app: ide
         version: ${{ matrix.version }}
+  didegithubrunner:
+    needs: ide
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - version: "1.33"
+          - version: "1.32"
+          - version: "1.31"
+    steps:
+    - name: Git checkout
+      uses: actions/checkout@v4
+    - name: Build didegithubrunner
+      uses: ./.github/actions/build
+      with:
+        app: didegithubrunner
+        version: ${{ matrix.version }}
