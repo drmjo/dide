@@ -1,5 +1,5 @@
-ARG REGISTRY
-ARG VERSION
+ARG REGISTRY=docker.io/drmjo
+ARG VERSION=2.28
 
 # start from the aws-cli image
 FROM $REGISTRY/awscli:$VERSION
@@ -32,7 +32,7 @@ RUN curl -OL https://github.com/stern/stern/releases/download/v${STERN_VERSION}/
     mv stern /bin/stern
 
 # set up the oh-my-zsh theme
-ENV ZSH /usr/local/share/zsh/oh-my-zsh
+ENV ZSH=/usr/local/share/zsh/oh-my-zsh
 RUN git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git $ZSH
 RUN mkdir $ZSH/completions
 

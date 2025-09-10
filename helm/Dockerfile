@@ -1,4 +1,4 @@
-FROM buildpack-deps:bullseye as builder
+FROM buildpack-deps:bookworm AS builder
 
 ARG VERSION=3.18.6
 ENV VERSION=$VERSION
@@ -12,7 +12,7 @@ RUN curl -O https://get.helm.sh/helm-v${VERSION}-linux-amd64.tar.gz && \
     sha256sum -c helm-v${VERSION}-linux-amd64.tar.gz.sha256 && \
     tar -xzvf helm-v${VERSION}-linux-amd64.tar.gz
 
-FROM debian:11-slim
+FROM debian:12-slim
 
 COPY --from=builder /linux-amd64/helm /bin/helm
 

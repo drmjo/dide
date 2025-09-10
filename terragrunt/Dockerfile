@@ -1,4 +1,4 @@
-FROM buildpack-deps:bullseye as builder
+FROM buildpack-deps:bookworm as builder
 
 ARG VERSION=0.85.1
 ENV VERSION=$VERSION
@@ -9,7 +9,7 @@ RUN curl -OL https://github.com/gruntwork-io/terragrunt/releases/download/v${VER
     sha256sum -c terragrunt_linux_amd64.sha256 && \
     chmod 755 terragrunt_linux_amd64
 
-FROM hashicorp/terraform:1.5.6
+FROM hashicorp/terraform:1.13
 
 COPY --from=builder /terragrunt_linux_amd64 /bin/terragrunt
 # 4ec12895c351e63181df4a446c80b7892f4258b9869de8a406e45902b227535f  terragrunt_darwin_amd64
