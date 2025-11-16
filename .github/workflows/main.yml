@@ -40,7 +40,7 @@ jobs:
       with:
         app: packer
         version: 1.14.2
-        sha: 7662eed6fa23cff352c996600c1cfdab085f19161cb6bd528e4125f31507f712
+        sha: cfefdea4ac580eba7b254ef34d25b756d4961741004e3e701a1476594d13e64a
 
   kubectl:
     runs-on: ubuntu-latest
