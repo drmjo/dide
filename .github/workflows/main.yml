@@ -30,6 +30,18 @@ jobs:
         version: 0.85.1
         sha: 7662eed6fa23cff352c996600c1cfdab085f19161cb6bd528e4125f31507f712
 
+  packer:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Git checkout
+      uses: actions/checkout@v4
+    - name: Build packer ${{ matrix.version }}
+      uses: ./.github/actions/build
+      with:
+        app: packer
+        version: 1.14.2
+        sha: 7662eed6fa23cff352c996600c1cfdab085f19161cb6bd528e4125f31507f712
+
   kubectl:
     runs-on: ubuntu-latest
     strategy:
