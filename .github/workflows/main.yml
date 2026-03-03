@@ -47,12 +47,16 @@ jobs:
     strategy:
       matrix:
         include:
-          - version: 1.33.0
-            sha: 9efe8d3facb23e1618cba36fb1c4e15ac9dc3ed5a2c2e18109e4a66b2bac12dc
-          - version: 1.32.3
-            sha: ab209d0c5134b61486a0486585604a616a5bb2fc07df46d304b3c95817b2d79f
-          - version: 1.31.5
-            sha: fbecbfd375b3686002c2e81d51c390172f5ffba3d6b47920d55342cb03f557af
+          - version: 1.35.2
+            sha: 924eb50779153f20cb668117d141440b95df2f325a64452d78dff9469145e277
+          - version: 1.34.5
+            sha: 6a17dd8387783b3144a65535e38d02c351027e9718ea34a6c360476cb26d28bb
+          - version: 1.33.9
+            sha: 9e33e3234c0842cd44a12c13e334b4ce930145ea84b855ce7cc0a7b6bc670c22
+          - version: 1.32.13
+            sha: db2ae479a63f3665d7f704ab18c0d4d4050144237980763221835b7305703c4c
+          - version: 1.31.14
+            sha: 8791ec7c8966b61420d55103a5fb948de9f0ca3d7306d789734975ad9704bdb0
           - version: 1.30.2
             sha: c6e9c45ce3f82c90663e3c30db3b27c167e8b19d83ed4048b61c1013f6a7c66e
           - version: 1.29.6
@@ -78,8 +82,8 @@ jobs:
       uses: ./.github/actions/build
       with:
         app: awscli
-        version: 2.28.14
-        sha: fc41f9798bd3d22c47c51fd710812479c99b80dd740dacc11cb158f0e04ed9c6
+        version: 2.33.31
+        sha: 77b449774e7b35e2b4e83d9196e92ac7a13be007ed861f75a01ff9c8bcd653e6
 
   eks:
     needs: awscli
@@ -87,6 +91,8 @@ jobs:
     strategy:
       matrix:
         include:
+          - version: "1.35"
+          - version: "1.34"
           - version: "1.33"
           - version: "1.32"
           - version: "1.31"
