@@ -3,7 +3,7 @@ ARG VERSION
 FROM $REGISTRY/kubectl:$VERSION as kubectl
 
 # start from the awscli image
-FROM $REGISTRY/awscli:2.28
+FROM $REGISTRY/awscli:2.34
 
 COPY --from=kubectl /bin/kubectl /bin/kubectl
 
