@@ -17,7 +17,7 @@ runs:
   using: "composite"
   steps:
     - name: Git checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: Login
       run: |

@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Git checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
     - name: Build helm ${{ matrix.version }}
       uses: ./.github/actions/build
       with:
@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Git checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
     - name: Build terragrunt ${{ matrix.version }}
       uses: ./.github/actions/build
       with:
@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Git checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
     - name: Build packer ${{ matrix.version }}
       uses: ./.github/actions/build
       with:
@@ -57,7 +57,7 @@ jobs:
             sha: fe80ae4133b44fa2077db4af144e80765eb1b3b2eede55fbff6933c4374d8c6e
     steps:
     - name: Git checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
     - name: Build kubectl
       uses: ./.github/actions/build
       with:
@@ -69,7 +69,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Git checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
     - name: Build awscli ${{ matrix.version }}
       uses: ./.github/actions/build
       with:
@@ -89,7 +89,7 @@ jobs:
           - version: "1.33"
     steps:
     - name: Git checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
     - name: Build eks
       uses: ./.github/actions/build
       with:
@@ -101,12 +101,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Git checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
     - name: Build base
       uses: ./.github/actions/build
       with:
         app: base
-        version: 2.28
+        version: 2.34
 
   ide:
     needs: base
@@ -124,7 +124,7 @@ jobs:
           - version: "1.28"
     steps:
     - name: Git checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
     - name: Build ide
       uses: ./.github/actions/build
       with:
@@ -143,7 +143,7 @@ jobs:
           - version: "1.31"
     steps:
     - name: Git checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
     - name: Build didegithubrunner
       uses: ./.github/actions/build
       with:

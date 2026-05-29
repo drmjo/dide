@@ -1,5 +1,5 @@
 ARG REGISTRY=docker.io/drmjo
-ARG VERSION=2.28
+ARG VERSION=2.34
 
 # start from the aws-cli image
 FROM $REGISTRY/awscli:$VERSION
